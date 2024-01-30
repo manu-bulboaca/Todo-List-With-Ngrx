@@ -9,7 +9,9 @@ export const selectToDosState: MemoizedSelector<AppState, TodosState> =
 // https://ngrx.io/guide/store/selectors
 
 // Task No. 1
-export const selectAllToDoItems: MemoizedSelector<AppState, ToDo[]> = createSelector(selectToDosState, (state: TodosState) => {
+export const selectAllToDoItemsSimple = (state: AppState) => state.todosState.todos;
+export const selectAllToDoItemsPerformant: MemoizedSelector<AppState, ToDo[]> = createSelector(selectToDosState, (state: TodosState) => {
   return state.todos;
 });
+
 

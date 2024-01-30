@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {selectAllToDoItems, ToDo} from './store/todos-store';
+import {ToDo} from './store/todos-store';
 import {Observable, of} from 'rxjs';
 import {AppState} from './store';
 import {MatToolbarModule} from '@angular/material/toolbar';
