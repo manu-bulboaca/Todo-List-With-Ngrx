@@ -13,10 +13,6 @@ export interface TodosState{
 
   // Define the initial state for the global store
   export const initialState: TodosState = {
-    todos: [
-      {id: 234, summary: 'Pay your bills', done: false},
-      {id: 431, summary: 'Set up a new appointment for later', done: false},
-      {id: 542, summary: 'Learn about NgRx', done: false}
-    ],
+    todos: [],
     loading: false,
   };

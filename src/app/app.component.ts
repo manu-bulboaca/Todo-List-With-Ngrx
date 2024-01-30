@@ -2,7 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {ToDo} from './store/todos-store';
+import {
+  addNewToDo, loadToDos,
+  markAsDone,
+  markAsUndone,
+  selectAllToDoItemsPerformant,
+  selectAllUndoneToDoItems, selectLoadingIndicator,
+  ToDo
+} from './store/todos-store';
 import {Observable, of} from 'rxjs';
 import {AppState} from './store';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -23,12 +30,10 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 })
 export class AppComponent implements OnInit {
 
-  loading: Observable<boolean> = of(false);
-  // TODO: loading: Observable<boolean> = this.store.select(/* newSelector */);
+  loading: Observable<boolean> = this.store.select(selectLoadingIndicator);
 
   // Task No. 1
-  todos: Observable<ToDo[]> = of([]);
-  // todos: Observable<ToDo[]> = this.store.select(/* newSelector */);
+  todos: Observable<ToDo[]> = this.store.select(selectAllToDoItemsPerformant);
 
   filterActive: boolean = false;
 
@@ -37,8 +42,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     // Task No. 5
-    // TODO: Initial Load of the to-do items
-    // this.store.dispatch();
+    this.store.dispatch(loadToDos());
   }
 
   onSelectionChanged($event: MatSelectionListChange): void {
@@ -47,11 +51,9 @@ export class AppComponent implements OnInit {
 
     // Task No. 3
     if (isToDoItemSelected) {
-      // TODO: mark item as done
-      // this.store.dispatch();
+      this.store.dispatch(markAsDone({id: todoItemId}));
     } else {
-      // TODO: mark item as done
-      // this.store.dispatch();
+      this.store.dispatch(markAsUndone({id: todoItemId}));
     }
   }
 
@@ -63,8 +65,7 @@ export class AppComponent implements OnInit {
         console.log(`New To-Do Summary: ${result}`)
 
         // Task No. 2
-        // TODO: dispatch the new action
-        // this.store.dispatch( theNewAction( {summary: result}) )
+        this.store.dispatch( addNewToDo( {todoSummary: result}) )
       }
     });
   }
@@ -74,11 +75,9 @@ export class AppComponent implements OnInit {
 
     // Task No. 4
     if (this.filterActive) {
-      // TODO: new selector should be used
-      // this.todos = this.store.select(/* desired selector */);
+      this.todos = this.store.select(selectAllUndoneToDoItems);
     } else {
-      // TODO: old selector (from task no. 1) should be used
-      // this.todos = this.store.select(/* desired selector */);
+      this.todos = this.store.select(selectAllToDoItemsPerformant);
     }
   }
 }

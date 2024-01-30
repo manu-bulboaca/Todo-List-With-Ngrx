@@ -14,4 +14,11 @@ export const selectAllToDoItemsPerformant: MemoizedSelector<AppState, ToDo[]> = 
   return state.todos;
 });
 
+export const selectAllUndoneToDoItems: MemoizedSelector<AppState, ToDo[]> = createSelector(selectToDosState, (state: TodosState) => {
+  return state.todos.filter(todo => !todo.done);
+});
+
+export const selectLoadingIndicator: MemoizedSelector<AppState, boolean> = createSelector(selectToDosState, (state: TodosState): boolean => {
+  return state.loading;
+})
 
