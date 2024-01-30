@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
       // TODO: mark item as done
       // this.store.dispatch();
     } else {
-      // TODO: mark item as done
+      // TODO: mark item as undone
       // this.store.dispatch();
     }
   }
