@@ -1,0 +1,28 @@
+<div class="container">
+  <mat-toolbar color="primary">
+    <span>Your To-Do List</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="add-icon"
+            [matTooltip]="'Add new ToDo'"
+            (click)="addNewToDo()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-icon-button class="filter-icon"
+            [ngClass]="{'active': filterActive}"
+            [matTooltip]="'Filter To-Do Items'"
+            (click)="filterToDos()">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+  </mat-toolbar>
+  @if (this.loading | async) {
+    <mat-progress-bar mode="buffer"></mat-progress-bar>
+  }
+
+  <mat-selection-list #todosList (selectionChange)="onSelectionChanged($event)">
+    @for (todo of todos | async; track todo.id) {
+      <mat-list-option [value]="todo.id" [selected]="todo.done">
+        {{ todo.summary }}
+      </mat-list-option>
+    }
+  </mat-selection-list>
+</div>

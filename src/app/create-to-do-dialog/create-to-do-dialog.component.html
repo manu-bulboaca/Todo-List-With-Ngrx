@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Please write the summary of your To-Do</h1>
+<div mat-dialog-content>
+  <mat-form-field style="width: 100%;">
+    <input matInput [(ngModel)]="summary">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="summary" cdkFocusInitial>Ok</button>
+</div>
