@@ -1,5 +1,5 @@
-import { TodosState } from "./todos-store";
+import { TodosState } from './todos-store';
 
 export interface AppState {
-    todosState: TodosState;
+  todosState: TodosState;
 }

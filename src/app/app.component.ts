@@ -1,28 +1,36 @@
-import {Component, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterOutlet} from '@angular/router';
-import {Store} from '@ngrx/store';
-import {ToDo} from './store/todos-store';
-import {Observable, of} from 'rxjs';
-import {AppState} from './store';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatListModule, MatSelectionListChange} from '@angular/material/list';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDialog} from '@angular/material/dialog';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {CreateToDoDialog} from './create-to-do-dialog/create-to-do-dialog.component';
-import {MatTooltipModule} from "@angular/material/tooltip";
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { ToDo } from './store/todos-store';
+import { Observable, of } from 'rxjs';
+import { AppState } from './store';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule, MatSelectionListChange } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CreateToDoDialog } from './create-to-do-dialog/create-to-do-dialog.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MatToolbarModule, MatListModule, MatIconModule, MatButtonModule, MatProgressBarModule, MatTooltipModule],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    MatToolbarModule,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule,
+    MatProgressBarModule,
+    MatTooltipModule,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-
   loading: Observable<boolean> = of(false);
   // TODO: loading: Observable<boolean> = this.store.select(/* newSelector */);
 
@@ -32,8 +40,10 @@ export class AppComponent implements OnInit {
 
   filterActive: boolean = false;
 
-  constructor(private store: Store<AppState>, public dialog: MatDialog) {
-  }
+  constructor(
+    private store: Store<AppState>,
+    public dialog: MatDialog,
+  ) {}
 
   ngOnInit(): void {
     // Task No. 5
@@ -58,9 +68,9 @@ export class AppComponent implements OnInit {
   addNewToDo(): void {
     const dialogRef = this.dialog.open(CreateToDoDialog);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log(`New To-Do Summary: ${result}`)
+        console.log(`New To-Do Summary: ${result}`);
 
         // Task No. 2
         // TODO: dispatch the new action

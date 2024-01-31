@@ -1,6 +1,10 @@
-import {MemoizedSelector, createFeatureSelector, createSelector} from "@ngrx/store";
-import {ToDo, TodosState} from "./todos-store.state";
-import {AppState} from "..";
+import {
+  MemoizedSelector,
+  createFeatureSelector,
+  createSelector,
+} from '@ngrx/store';
+import { ToDo, TodosState } from './todos-store.state';
+import { AppState } from '..';
 
 export const selectToDosState: MemoizedSelector<AppState, TodosState> =
   createFeatureSelector<TodosState>('todosState');
@@ -9,9 +13,9 @@ export const selectToDosState: MemoizedSelector<AppState, TodosState> =
 // https://ngrx.io/guide/store/selectors
 
 // Task No. 1
-export const selectAllToDoItemsSimple = (state: AppState) => state.todosState.todos;
-export const selectAllToDoItemsPerformant: MemoizedSelector<AppState, ToDo[]> = createSelector(selectToDosState, (state: TodosState) => {
-  return state.todos;
-});
-
-
+export const selectAllToDoItemsSimple = (state: AppState) =>
+  state.todosState.todos;
+export const selectAllToDoItemsPerformant: MemoizedSelector<AppState, ToDo[]> =
+  createSelector(selectToDosState, (state: TodosState) => {
+    return state.todos;
+  });

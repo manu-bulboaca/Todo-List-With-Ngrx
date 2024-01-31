@@ -1,6 +1,6 @@
-import {createReducer, on} from "@ngrx/store";
-import * as TodosActions from "./todos-store.actions";
-import {initialState, TodosState} from "./todos-store.state";
+import { createReducer, on } from '@ngrx/store';
+import * as TodosActions from './todos-store.actions';
+import { initialState, TodosState } from './todos-store.state';
 
 let counter = 0;
 

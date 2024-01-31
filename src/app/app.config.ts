@@ -16,10 +16,10 @@ export const appConfig: ApplicationConfig = {
     provideStore({ todosState: todosReducers }),
     provideEffects(ToDosStoreEffects),
     provideStoreDevtools({
-        maxAge: 25,
-        trace: true, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
-        traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
-        connectInZone: true // If set to true, the connection is established within the Angular zone
+      maxAge: 25,
+      trace: true, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
+      traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
+      connectInZone: true, // If set to true, the connection is established within the Angular zone
     }),
-]
+  ],
 };
